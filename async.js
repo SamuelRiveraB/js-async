@@ -37,3 +37,8 @@ async function sequence() {
 sequence().then(console.log);
 parallel().then(console.log);
 race().then(console.log);
+
+const promiseOne = new Promise((resolve, reject) => setTimeout(resolve, 6000));
+const promiseTwo = new Promise((resolve, reject) => setTimeout(reject, 6000));
+
+Promise.allSettled([promiseOne, promiseTwo]).then((data) => console.log(data));
